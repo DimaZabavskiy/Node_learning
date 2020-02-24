@@ -20,6 +20,12 @@ function createForm (data, error) {
             <span style="display: ${error? 'inline' : 'none'}; color: red">${error || ''}</span>`
 }
 
+function createSuccess(data) {
+    let result = `<b>Форма отправлена успешно</b><br/>`;
+    for (let key in data) result += (`${key}: <i>${data[key]}</i><br/>`);
+    return result;
+}
+
 function checkValidation (data) {
     let message = '';
 
@@ -57,7 +63,8 @@ webserver.get('/', (req, res) => {
     else {
         let errorMessage = checkValidation(req.query);
 
-        if (!errorMessage) res.send('Форма отправлена успешно');
+        // if (!errorMessage) res.send(`Форма отправлена успешно<br/>`+req.query);
+        if (!errorMessage) res.send(createSuccess(req.query));
         else res.send(createForm(req.query, errorMessage));
     }
 });
