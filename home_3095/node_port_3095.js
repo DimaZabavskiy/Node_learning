@@ -1,5 +1,5 @@
 const express = require('express');
-﻿const path = require('path');
+const path = require('path');
 const fs = require('fs');
 const os = require('os');
 
@@ -37,14 +37,20 @@ webserver.get('/variants', (req, res) => {
     logLineSync(logFN,' /variants service called');
     let fileContent = fs.readFileSync(jsonFile, "utf8");
     logLineSync(logFN,'fileContent: ' +  fileContent);
-    res.send(fileContent);
+    let variants = [];
+    JSON.parse(fileContent).forEach ( item => variants.push({id: item.id, team:  item.team}));
+    logLineSync(logFN,'variants: ' +  JSON.stringify(variants));
+    res.send(JSON.stringify(variants));
 });
 
 webserver.post('/stat', (req, res) => {
     logLineSync(logFN,' /stat service called');
     let statContent = fs.readFileSync(jsonFile, "utf8");
     logLineSync(logFN,'statContent: ' +  statContent);
-    res.send(statContent);
+    let statistics = {};
+    JSON.parse(statContent).forEach( item => statistics[item.id] = item.vote);
+    logLineSync(logFN,'statistics: ' +  JSON.stringify(statistics));
+    res.send(JSON.stringify(statistics));
 });
 
 webserver.post('/vote', (req, res) => {

@@ -50,11 +50,11 @@
             let currentStat = document.createElement('h2');
             currentStat.innerText = 'Текущие результаты:';
             statBlock.appendChild(currentStat);
-            stat.forEach( item => {
+            for (let key in stat) {
                 let team = document.createElement('p');
-                team.innerText = ( 'Команда: ' + item.team + ' - ' + item.vote + ' голосов' );
+                team.innerText = ( 'Вариант: ' + key + ' - ' + stat[key] + ' голосов' );
                 statBlock.appendChild(team);
-            })
+            }
         }
 
         async function showVotesBlock() {
@@ -84,7 +84,7 @@
             let pushVote = document.createElement('div');
             pushVote.innerText = 'Проголосовать';
             pushVote.style.cssText = 'background-color: lightGrey; border-radius: 8px; font-size: 20px;' +
-                'font-weight: bold; margin-top: 10px; padding: 10px 15px; display: inline-block';
+                'font-weight: bold; margin-top: 10px; padding: 10px 15px; display: inline-block; cursor: pointer';
             pushVote.onclick = makeChoise;
             votesBlock.appendChild(pushVote);
         }
