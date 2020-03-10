@@ -1,0 +1,16 @@
+#error {
+    color: red;
+    font-weight: bold;
+}
+#types {
+    margin: 10px 0;
+}
+#types > span {
+    background-color: lightgrey;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+#textarea{
+    min-width: 250px;
+    min-height: 100px;
+}
