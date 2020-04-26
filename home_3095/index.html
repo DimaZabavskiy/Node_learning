@@ -10,15 +10,18 @@
     <div id="stat"></div>
     <div id="votesBlock"></div>
     <div id="error" style="color: red; font-weight: bold"></div>
+    <div></div>
+    <textarea id="textarea" ></textarea>
 
     <script>
-        let chosenTeam, statBlock, errorBlock, votesBlock, success;
+        let chosenTeam, statBlock, errorBlock, votesBlock, success, textarea;
 
         window.onload = async function () {
             statBlock = document.getElementById('stat');
             votesBlock = document.getElementById('votesBlock');
             errorBlock = document.getElementById('error');
             success = document.getElementById('success');
+            textarea = document.getElementById('textarea');
             await getStat();
             await showVotesBlock();
         };
@@ -55,6 +58,7 @@
                 team.innerText = ( 'Вариант: ' + key + ' - ' + stat[key] + ' голосов' );
                 statBlock.appendChild(team);
             }
+            textarea.innerText = JSON.stringify(stat);
         }
 
         async function showVotesBlock() {
