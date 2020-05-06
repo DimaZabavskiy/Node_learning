@@ -1,0 +1,111 @@
+
+
+.Front {
+
+  &__form {
+    display: flex;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid lightgrey;
+    background-color: bisque;
+    border-radius: 10px;
+    justify-content: space-between;
+
+    &__files{
+      position: relative;
+      width: 30%;
+      min-height: 50px;
+      display: flex;
+      flex-wrap: wrap;
+      border: 1px solid rgba(12, 39, 62, 0.2);
+      box-sizing: border-box;
+      border-radius: 4px;
+      padding: 8px;
+
+      &:hover {
+        border: 1px solid rgba(12, 39, 62, 0.5);
+      }
+
+      &__input {
+        display: none;
+      }
+
+      &__label {
+        margin-left: 12px;
+        cursor: pointer;
+      }
+    }
+
+    &__descr {
+      width: 40%;
+      padding: 0 5px;
+      > textarea {
+        width: 100%;
+        min-height: 100px;
+      }
+    }
+    &__sendActive {
+      width: 30%;
+      color: lightgreen;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    &__sendDisabled {
+      color: red;
+      font-size: 24px;
+      font-style: italic;
+    }
+
+    .upload {
+      position: relative;
+      width: 200px;
+      height: 25px;
+      border: 1px solid lightslategrey;
+      background-color: white;
+
+      &__process {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background-color: green;
+        //width: 0;
+      }
+    }
+  }
+
+  &__requests {
+    padding: 20px 20px 0 20px;
+    margin: 20px;
+    border: 1px solid lightgrey;
+    background-color: lightcyan;
+    border-radius: 10px;
+
+    &__item {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid lightgrey;
+      padding: 20px;
+      margin-bottom: 20px;
+
+      &__name {
+        font-size: 20px;
+        font-weight: bold;
+        color: blue;
+        cursor: pointer;
+        margin-right: 20px;
+        border: none;
+        background-color: transparent;
+      }
+
+      &__comment {
+        font-size: 16px;
+        font-style: italic;
+        width: 60%;
+      }
+    }
+  }
+}
